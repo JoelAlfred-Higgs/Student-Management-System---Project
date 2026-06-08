@@ -1,5 +1,6 @@
 try:
- class student:
+ with open("STM.txt","w+") as f:  
+  class student:
     def __init__(self,name,roll,gender,dept):
         self.name = name
         self.roll = roll
@@ -45,6 +46,7 @@ try:
  Dept = input("Enter department: ")
  stud = student(name,roll,Gender,Dept)
  ls.append(stud)
+ f.write(''.join(ls))
 
  while True:
     choice = int(input("Enter Operation number(1-display,2-add,3-search,4-delete):"))
