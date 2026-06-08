@@ -23,6 +23,9 @@ class student:
             break
      if not found:
         print("Student Details Not Found")
+    def delete(self,delroll):
+        deldet = stud.search(delroll)
+        del deldet
 ls = []
 name = input("Enter The name of the student: ")
 roll = int(input("Enter Students Roll.no: "))
@@ -31,7 +34,7 @@ Dept = input("Enter department: ")
 stud = student(name,roll,Gender,Dept)
 ls.append(stud)
 while True:
-    choice = int(input("Enter Operation number(1-display,2-add,3-search):"))
+    choice = int(input("Enter Operation number(1-display,2-add,3-search,4-delete):"))
     match choice:
         case 1:
             for i in ls:
@@ -45,6 +48,9 @@ while True:
         case 3:
             searcroll = int(input("Enter students rollNo: "))
             stud.search(searcroll)
+        case 4:
+            delroll = int(input("Enter student roll no to be deleted:"))
+            stud.delete(delroll)
         case _:
             print("Invalid Choice")
     ch = input("Do you wish to continue (y/n): ")
