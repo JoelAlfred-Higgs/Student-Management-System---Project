@@ -1,6 +1,5 @@
 try:
- with open("STM.txt","w+") as f:  
-  class student:
+ class student:
     def __init__(self,name,roll,gender,dept):
         self.name = name
         self.roll = roll
@@ -12,13 +11,16 @@ try:
         print("==========================================")
         print(f"Name:{self.name}\nRoll:{self.roll}\nGender:{self.gender}\nDepartment:{self.dept}")
         print("==========================================")
+ class StudManagsys:   
+    def __init__(self):
+       self.ls = []    
     def add(self,Nname,Nroll,Ngen,Ndept):
         stud = student(Nname,Nroll,Ngen,Ndept)
-        ls.append(stud)
+        self.ls.append(stud)
         
     def search(self,searcroll):
      found = False
-     for i in ls:
+     for i in self.ls:
          if searcroll == i.roll:
             found = True
             print("=========================================")
@@ -30,30 +32,29 @@ try:
         
     def delete(self, delroll):
      found = False
-     for i in ls:
+     for i in self.ls:
         if i.roll == delroll:
-            ls.remove(i)
+            self.ls.remove(i)
             found = True
             print("Student Deleted Successfully")
             break
      if not found:
         print("Student Not Found")
             
- ls = []
+
  name = input("Enter The name of the student: ")
  roll = int(input("Enter Students Roll.no: "))
  Gender = input("Enter Students Gender: ")
  Dept = input("Enter department: ")
- stud = student(name,roll,Gender,Dept)
- ls.append(stud)
- f.write(''.join(ls))
+ lis1 = StudManagsys()
+ lis1.add(name,roll,Gender,Dept)
 
  while True:
     choice = int(input("Enter Operation number(1-display,2-add,3-search,4-delete):"))
     
     match choice:
         case 1:
-            for i in ls:
+            for i in lis1.ls:
                 i.display()
         
         case 2:
@@ -61,15 +62,15 @@ try:
             Nroll = int(input("Enter roll no: "))
             Ngen = input("Enter gender: ")
             Ndept = input("Enter Department: ")
-            stud.add(Nname,Nroll,Ngen,Ndept)
+            lis1.add(Nname,Nroll,Ngen,Ndept)
         
         case 3:
             searcroll = int(input("Enter students rollNo: "))
-            stud.search(searcroll)
+            lis1.search(searcroll)
         
         case 4:
             delroll = int(input("Enter student roll no to be deleted:"))
-            stud.delete(delroll)
+            lis1.delete(delroll)
         
         case _:
             print("Invalid Choice")
@@ -77,8 +78,8 @@ try:
     
     if ch.lower() != 'y':
         break
-except Exception as e:
-    print("Error",e)
+except ValueError as e:
+    print("Invalid Data",e)
 
  
     
